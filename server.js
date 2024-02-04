@@ -95,7 +95,7 @@ app.get("/campaigns", async (req, res) => {
         });
 
         for (const id of JSON.parse(listId)) {
-            const campaignBody = composeCampaignBody(emails, scheduleTime, id, subject, body);
+            const campaignBody = composeCampaignBody(scheduleTime, id, subject, body);
 
             const response = await mailchimp.campaigns.create(campaignBody);
         }
