@@ -57,8 +57,6 @@ app.get("/audiences", async (req, res) => {
             query: { accessToken, server },
         } = req;
 
-        console.log("accessToken", accessToken, server);
-
         mailchimp.setConfig({
             accessToken,
             server,
@@ -96,8 +94,6 @@ app.get("/campaigns", async (req, res) => {
             server,
         });
 
-        console.log("contacts", emails, scheduleTime, listId, subject, body);
-
         for (const id of JSON.parse(listId)) {
             const campaignBody = composeCampaignBody(emails, scheduleTime, id, subject, body);
 
@@ -115,6 +111,6 @@ app.get("/campaigns", async (req, res) => {
     }
 });
 
-app.listen(3000, "127.0.0.1", function () {
-    console.log("Server running on port 3000");
+app.listen(80, "0.0.0.0", function () {
+    console.log("Server running on port 80");
 });
